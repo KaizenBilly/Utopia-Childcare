@@ -72,9 +72,31 @@
       display: flex; align-items: center; justify-content: space-between;
       max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px;
     }
-    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
-    .nav-logo img { height: 40px; width: auto; }
-    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; gap: 10px; font-size: 18px; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--text); font-weight: 600; }
+    .nav-logo svg { height: 32px; width: 32px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
+    .nav-dropdown > a svg { width: 12px; height: 12px; transition: transform var(--transition); }
+    .nav-dropdown:hover > a svg { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute; top: 100%; left: -12px; padding-top: 8px;
+      opacity: 0; visibility: hidden; transform: translateY(4px);
+      transition: opacity var(--transition), visibility var(--transition), transform var(--transition);
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown-menu ul {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--card-shadow-hover); padding: 8px 0; min-width: 180px;
+    }
+    .nav-dropdown-menu a {
+      display: block; padding: 10px 20px; font-size: 14px; font-weight: 500;
+      color: var(--text-secondary); transition: background var(--transition), color var(--transition);
+    }
+    .nav-dropdown-menu a:hover { background: var(--primary-light); color: var(--primary); }
+    .nav-dropdown-menu a::after { display: none; }
     .nav-links a {
       color: var(--text-secondary); font-size: 14px; font-weight: 500;
       transition: color var(--transition); padding: 4px 0; position: relative;
@@ -465,6 +487,10 @@
       .nav-links.open a {
         display: block; padding: 14px 0; font-size: 15px; font-weight: 600; color: var(--text);
       }
+      .nav-dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; padding-top: 0; }
+      .nav-dropdown-menu ul { box-shadow: none; border: none; background: transparent; padding: 0; min-width: 0; }
+      .nav-dropdown-menu a { padding: 12px 0 12px 16px; }
+      .nav-dropdown > a svg { display: none; }
       .nav-links.open .mobile-phone {
         display: flex; align-items: center; gap: 8px;
         color: var(--primary); font-weight: 700; font-size: 15px;
@@ -542,13 +568,21 @@
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="Utopia Childcare Home">
-        <img src="https://utopiachildcare.co.uk/wp-content/uploads/2024/01/utopia-childcare-logo.png" alt="Utopia Childcare" onerror="this.onerror=null;this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:20px;font-weight:900;color:#1B56DB\'>Utopia <span style=\'color:#1A1A2E;font-weight:600\'>Childcare</span></span>'">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#1B56DB"/><circle cx="16" cy="16" r="11" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M12 20V13a4 4 0 1 1 8 0v7" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="10" r="2" fill="#FFB800"/></svg>
+        Utopia <span>Childcare</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="/about">About Us</a></li>
+        <li><a href="/about">About</a></li>
         <li><a href="/our-homes">Our Homes</a></li>
-        <li><a href="/for-professionals">For Professionals</a></li>
-        <li><a href="/for-families">For Families</a></li>
+        <li class="nav-dropdown">
+          <a href="/for-professionals">Who We Support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="nav-dropdown-menu">
+            <ul>
+              <li><a href="/for-professionals">For Professionals</a></li>
+              <li><a href="/for-families">For Families</a></li>
+            </ul>
+          </div>
+        </li>
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li>
         <li class="mobile-phone">
@@ -567,16 +601,6 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           00000 000 000
         </a>
-        <div class="nav-divider"></div>
-        <div class="nav-socials">
-          <a href="https://facebook.com" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="https://instagram.com" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-          </a>
-        </div>
-        <div class="nav-divider"></div>
         <a href="/make-a-referral" class="nav-cta">Make a Referral</a>
       </div>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.getElementById('navLinks').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true')">
@@ -881,7 +905,10 @@
       <div class="footer-grid">
         <!-- Brand -->
         <div class="footer-brand">
-          <a href="/" class="footer-logo"><img src="https://utopiachildcare.co.uk/wp-content/uploads/2024/01/utopia-childcare-logo.png" alt="Utopia Childcare"></a>
+          <a href="/" class="footer-logo" style="display:inline-flex;align-items:center;gap:10px;font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.02em;">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:32px;width:32px;"><circle cx="16" cy="16" r="15" fill="#1B56DB"/><circle cx="16" cy="16" r="11" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M12 20V13a4 4 0 1 1 8 0v7" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="10" r="2" fill="#FFB800"/></svg>
+            Utopia <span style="font-weight:600;opacity:0.8;">Childcare</span>
+          </a>
           <p>Warm, therapeutic residential care for children and young people across the West Midlands and East Midlands.</p>
           <div class="footer-socials">
             <a href="#" aria-label="Facebook">
