@@ -72,9 +72,8 @@
       display: flex; align-items: center; justify-content: space-between;
       max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px;
     }
-    .nav-logo { display: flex; align-items: center; flex-shrink: 0; gap: 10px; font-size: 18px; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; }
-    .nav-logo span { color: var(--text); font-weight: 600; }
-    .nav-logo svg { height: 32px; width: 32px; flex-shrink: 0; }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-logo img { height: 40px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 28px; }
     /* Dropdown */
     .nav-dropdown { position: relative; }
@@ -568,8 +567,7 @@
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="Utopia Childcare Home">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#1B56DB"/><circle cx="16" cy="16" r="11" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M12 20V13a4 4 0 1 1 8 0v7" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="10" r="2" fill="#FFB800"/></svg>
-        Utopia <span>Childcare</span>
+        <img src="utopia-colour-logo.png" alt="Utopia Childcare">
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="/about">About</a></li>
@@ -905,10 +903,7 @@
       <div class="footer-grid">
         <!-- Brand -->
         <div class="footer-brand">
-          <a href="/" class="footer-logo" style="display:inline-flex;align-items:center;gap:10px;font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.02em;">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:32px;width:32px;"><circle cx="16" cy="16" r="15" fill="#1B56DB"/><circle cx="16" cy="16" r="11" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M12 20V13a4 4 0 1 1 8 0v7" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="10" r="2" fill="#FFB800"/></svg>
-            Utopia <span style="font-weight:600;opacity:0.8;">Childcare</span>
-          </a>
+          <a href="/" class="footer-logo"><img src="utopia-colour-logo.png" alt="Utopia Childcare" style="height:36px;width:auto;filter:brightness(0) invert(1);"></a>
           <p>Warm, therapeutic residential care for children and young people across the West Midlands and East Midlands.</p>
           <div class="footer-socials">
             <a href="#" aria-label="Facebook">
